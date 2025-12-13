@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#181818;z-index:20000;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.5s;">
+            <div style="color:#fff;font-family:'Press Start 2P',monospace;font-size:1.2rem;margin-bottom:32px;letter-spacing:2px;">LOADING...</div>
+            <div id="progress-bar-container" style="width:320px;height:32px;background:#222;border:2px solid #00d4ff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px #000;">
+                <div id="progress-bar" style="height:100%;width:0;background:linear-gradient(90deg,#00d4ff,#00ffae);transition:width 0.2s;"></div>
+            </div>
+            <div id="progress-percent" style="color:#00d4ff;font-family:'Press Start 2P',monospace;font-size:1rem;margin-top:12px;">0%</div>
+        </div>
     <!-- Music Player Toggle (Top Left) -->
     <button id="music-toggle" style="position: fixed; top: 20px; left: 20px; z-index: 10000; background: #222; color: #fff; border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
         &#127925;
