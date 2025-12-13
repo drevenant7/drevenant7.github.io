@@ -187,6 +187,31 @@ document.head.appendChild(style);
 
 
 
+// Loading Overlay Progress Bar Animation
+window.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('loading-overlay');
+    const bar = document.getElementById('progress-bar');
+    const percent = document.getElementById('progress-percent');
+    let progress = 0;
+    function animateBar() {
+        if (progress < 100) {
+            progress += Math.random() * 7 + 4; // faster step
+            if (progress > 100) progress = 100;
+            bar.style.width = progress + '%';
+            percent.textContent = Math.floor(progress) + '%';
+            setTimeout(animateBar, 18 + Math.random() * 22); // faster interval
+        } else {
+            bar.style.width = '100%';
+            percent.textContent = '100%';
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.style.display = 'none', 500);
+            }, 400);
+        }
+    }
+    animateBar();
+});
+
 // Music Player Toggle Logic with Animated Dialogue
 const musicToggle = document.getElementById('music-toggle');
 const musicPlayer = document.getElementById('music-player');
