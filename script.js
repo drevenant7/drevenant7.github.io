@@ -185,4 +185,51 @@ document.head.appendChild(style);
 
 
 
+
+
+// Music Player Toggle Logic with Animated Dialogue
+const musicToggle = document.getElementById('music-toggle');
+const musicPlayer = document.getElementById('music-player');
+const musicDialogue = document.getElementById('music-dialogue');
+let isPlaying = false;
+
+function showMusicDialogue(text) {
+    musicDialogue.textContent = text;
+    musicDialogue.style.opacity = '1';
+    musicDialogue.style.transform = 'translateY(0)';
+    setTimeout(() => {
+        musicDialogue.style.opacity = '0';
+        musicDialogue.style.transform = 'translateY(-10px)';
+    }, 1200);
+}
+
+musicToggle.addEventListener('click', () => {
+    if (!isPlaying) {
+        musicPlayer.play();
+        musicToggle.style.background = '#00d4ff';
+        musicToggle.style.color = '#222';
+        showMusicDialogue('Playing music...');
+    } else {
+        musicPlayer.pause();
+        musicToggle.style.background = '#222';
+        musicToggle.style.color = '#fff';
+        showMusicDialogue('Music paused');
+    }
+    isPlaying = !isPlaying;
+});
+
+musicPlayer.addEventListener('pause', () => {
+    isPlaying = false;
+    musicToggle.style.background = '#222';
+    musicToggle.style.color = '#fff';
+    showMusicDialogue('Music paused');
+});
+
+musicPlayer.addEventListener('play', () => {
+    isPlaying = true;
+    musicToggle.style.background = '#00d4ff';
+    musicToggle.style.color = '#222';
+    showMusicDialogue('Playing music...');
+});
+
 console.log('DREVENANT7 site loaded successfully!');
