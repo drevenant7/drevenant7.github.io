@@ -6,6 +6,8 @@
 
 This is the personal website of DREVENANT7, a leading expert in Pojavlauncher for running Minecraft Java Edition on mobile devices (iOS and Android). The site serves as a hub for tutorials, guides, and community resources related to Pojavlauncher, Optifine setup, shaders, and troubleshooting common issues.
 
+**Download my Minecraft mod "CoordDisplay" for free on Modrinth:** [https://modrinth.com/mod/coorddisplay/](https://modrinth.com/mod/coorddisplay/)
+
 ## Features
 
 - **Animated Background**: Dynamic particle system with canvas-based animations
