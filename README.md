@@ -48,7 +48,6 @@ This is the personal website of DREVENANT7, a leading expert in Pojavlauncher fo
 /
 ├── index.html          # Main HTML file
 ├── style.css           # Main stylesheet
-├── rgb.css            # Additional styles (rainbow animations)
 ├── script.js           # JavaScript for animations and interactions
 ├── profile.jpeg        # Profile avatar image
 ├── coffee.png          # Support link icon
