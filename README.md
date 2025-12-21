@@ -89,4 +89,4 @@ This project is open source. Feel free to use and modify as needed.
 ---
 
 *DREVENANT7: Your Source For All Things Pojavlauncher*</content>
-<parameter name="filePath">/home/khin-phunnadet/Documents/vscode/readme.md
+
