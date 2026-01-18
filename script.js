@@ -1,260 +1,191 @@
-// Particle Animation Background
-class ParticleSystem {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-        this.particles = [];
-        this.particleCount = 50;
-        this.width = canvas.width;
-        this.height = canvas.height;
+// Loading Screen Animation
+window.addEventListener('load', () => {
+    let progress = 0;
+    const loadingScreen = document.getElementById('loading-screen');
+    const percentage = document.querySelector('.loader-percentage');
+    
+    const interval = setInterval(() => {
+        progress += Math.random() * 30;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            
+            percentage.textContent = '100%';
+            
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 500);
+        } else {
+            percentage.textContent = Math.floor(progress) + '%';
+        }
+    }, 200);
+});
+
+// Music Player Functionality
+const musicBtn = document.getElementById('musicBtn');
+let isPlaying = false;
+let audio = null;
+
+musicBtn.addEventListener('click', () => {
+    if (!audio) {
+        // ═══════════════════════════════════════════════════════
+        // 🎵 ADD YOUR MUSIC FILE HERE:
+        // ═══════════════════════════════════════════════════════
+        // 1. Upload your music file (MP3, WAV, OGG) to the same folder
+        // 2. Replace 'your-song.mp3' with YOUR file name below
+        // 3. Remove the // at the start of the next 2 lines to activate
         
-        this.resizeCanvas();
-        this.initParticles();
-        this.animate();
+            audio = new Audio('song.mp3');  
+            audio.loop = true;                 
         
-        window.addEventListener('resize', () => this.resizeCanvas());
+        // Example: If your file is named "background-music.mp3", use:
+        // audio = new Audio('background-music.mp3');
+        
+        // ═══════════════════════════════════════════════════════
+        
+        // For demo purposes (remove this line after adding your music)
     }
     
-    resizeCanvas() {
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
-        this.canvas.width = this.width;
-        this.canvas.height = this.height;
-    }
+    isPlaying = !isPlaying;
     
-    initParticles() {
-        this.particles = [];
-        for (let i = 0; i < this.particleCount; i++) {
-            this.particles.push({
-                x: Math.random() * this.width,
-                y: Math.random() * this.height,
-                vx: (Math.random() - 0.5) * 2,
-                vy: Math.random() * 1 + 0.5,
-                radius: Math.random() * 3 + 1,
-                opacity: Math.random() * 0.5 + 0.2,
-                color: Math.random() > 0.5 ? '#00d4ff' : '#ff006e'
+    if (isPlaying) {
+        musicBtn.classList.add('playing');
+        if (audio) audio.play();
+    } else {
+        musicBtn.classList.remove('playing');
+        if (audio) audio.pause();
+    }
+});
+
+// Smooth Scroll for all links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
-    }
-    
-    update() {
-        this.particles.forEach(particle => {
-            particle.x += particle.vx;
-            particle.y += particle.vy;
-            
-            // Wrap around screen
-            if (particle.x < 0) particle.x = this.width;
-            if (particle.x > this.width) particle.x = 0;
-            if (particle.y > this.height) {
-                particle.y = 0;
-                particle.x = Math.random() * this.width;
-            }
-            
-            // Fade effect
-            particle.opacity += (Math.random() - 0.5) * 0.02;
-            particle.opacity = Math.max(0.1, Math.min(0.6, particle.opacity));
-        });
-    }
-    
-    draw() {
-        this.ctx.clearRect(0, 0, this.width, this.height);
-        
-        // Draw gradient background
-        const gradient = this.ctx.createLinearGradient(0, 0, this.width, this.height);
-        gradient.addColorStop(0, 'rgba(20, 30, 80, 0.8)');
-        gradient.addColorStop(0.5, 'rgba(10, 14, 39, 0.9)');
-        gradient.addColorStop(1, 'rgba(5, 10, 30, 0.95)');
-        this.ctx.fillStyle = gradient;
-        this.ctx.fillRect(0, 0, this.width, this.height);
-        
-        // Draw particles
-        this.particles.forEach(particle => {
-            this.ctx.fillStyle = particle.color;
-            this.ctx.globalAlpha = particle.opacity;
-            this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-            this.ctx.fill();
-        });
-        
-        this.ctx.globalAlpha = 1;
-    }
-    
-    animate() {
-        this.update();
-        this.draw();
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
-// Initialize particle system
-const canvas = document.getElementById('bg-canvas');
-if (canvas) {
-    new ParticleSystem(canvas);
-}
-
-
-
-// Link Click Handlers
-const links = document.querySelectorAll('.link-item');
-links.forEach(link => {
-    link.addEventListener('click', (e) => {
-        // Allow YouTube, Telegram, Telegram Channel, TikTok, and Support links to open normally
-        if (
-            link.classList.contains('youtube-link') ||
-            link.classList.contains('telegram-link') ||
-            link.classList.contains('telegram-channel-link') ||
-            link.classList.contains('tiktok-link') ||
-            link.classList.contains('support-link')
-        ) {
-            // Optionally show notification, then allow default
-            const text = link.querySelector('.link-text').textContent;
-            showNotification(`Opening ${text}...`);
-            // Do not preventDefault, allow link to open
-            return;
-        }
-        // Prevent default for other links
-        e.preventDefault();
-        const text = link.querySelector('.link-text').textContent;
-        console.log('Link clicked:', text);
-        showNotification(`Opening ${text}...`);
     });
 });
 
-// Social Icon Handlers
-const socialIcons = document.querySelectorAll('.social-icon');
-socialIcons.forEach(icon => {
-    icon.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('Social icon clicked');
-        showNotification('Social link clicked!');
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all sections for animation
+const sections = document.querySelectorAll('.feature-card, .social-card');
+sections.forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
+});
+
+// Add parallax effect to gradient orbs
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX / window.innerWidth;
+    mouseY = e.clientY / window.innerHeight;
+    
+    const orbs = document.querySelectorAll('.gradient-orb');
+    orbs.forEach((orb, index) => {
+        const speed = (index + 1) * 50;
+        const x = (mouseX - 0.5) * speed;
+        const y = (mouseY - 0.5) * speed;
+        orb.style.transform = `translate(${x}px, ${y}px)`;
     });
 });
 
-// Notification System
-function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: rgba(0, 212, 255, 0.2);
-        border: 2px solid #00d4ff;
-        color: #00d4ff;
-        padding: 12px 20px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        z-index: 9999;
-        animation: slideIn 0.3s ease-out;
-    `;
+// Add click ripple effect to social cards
+const socialCards = document.querySelectorAll('.social-card');
+socialCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+});
+
+// Add dynamic title animation
+const titleLine = document.querySelector('.title-line');
+if (titleLine) {
+    const text = titleLine.textContent;
+    titleLine.textContent = '';
     
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease-out';
-        setTimeout(() => notification.remove(), 300);
-    }, 2000);
-}
-
-// Add animation styles for notifications
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        to {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-    }
-`;
-document.head.appendChild(style);
-
-
-
-
-
-// Loading Overlay Progress Bar Animation
-window.addEventListener('DOMContentLoaded', () => {
-    const overlay = document.getElementById('loading-overlay');
-    const bar = document.getElementById('progress-bar');
-    const percent = document.getElementById('progress-percent');
-    let progress = 0;
-    function animateBar() {
-        if (progress < 100) {
-            progress += Math.random() * 7 + 4; // faster step
-            if (progress > 100) progress = 100;
-            bar.style.width = progress + '%';
-            percent.textContent = Math.floor(progress) + '%';
-            setTimeout(animateBar, 18 + Math.random() * 22); // faster interval
+    let index = 0;
+    const typeInterval = setInterval(() => {
+        if (index < text.length) {
+            titleLine.textContent += text[index];
+            index++;
         } else {
-            bar.style.width = '100%';
-            percent.textContent = '100%';
-            setTimeout(() => {
-                overlay.style.opacity = '0';
-                setTimeout(() => overlay.style.display = 'none', 500);
-            }, 400);
+            clearInterval(typeInterval);
         }
-    }
-    animateBar();
-});
-
-// Music Player Toggle Logic with Animated Dialogue
-const musicToggle = document.getElementById('music-toggle');
-const musicPlayer = document.getElementById('music-player');
-const musicDialogue = document.getElementById('music-dialogue');
-let isPlaying = false;
-
-function showMusicDialogue(text) {
-    musicDialogue.textContent = text;
-    musicDialogue.style.opacity = '1';
-    musicDialogue.style.transform = 'translateY(0)';
-    setTimeout(() => {
-        musicDialogue.style.opacity = '0';
-        musicDialogue.style.transform = 'translateY(-10px)';
-    }, 1200);
+    }, 100);
 }
 
-musicToggle.addEventListener('click', () => {
-    if (!isPlaying) {
-        musicPlayer.play();
-        musicToggle.style.background = '#00d4ff';
-        musicToggle.style.color = '#222';
-        showMusicDialogue('Playing music...');
-    } else {
-        musicPlayer.pause();
-        musicToggle.style.background = '#222';
-        musicToggle.style.color = '#fff';
-        showMusicDialogue('Music paused');
-    }
-    isPlaying = !isPlaying;
+// Add cursor trail effect
+const trail = [];
+const trailLength = 20;
+
+for (let i = 0; i < trailLength; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'cursor-trail';
+    document.body.appendChild(dot);
+    trail.push(dot);
+}
+
+let mouseXPos = 0;
+let mouseYPos = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseXPos = e.clientX;
+    mouseYPos = e.clientY;
 });
 
-musicPlayer.addEventListener('pause', () => {
-    isPlaying = false;
-    musicToggle.style.background = '#222';
-    musicToggle.style.color = '#fff';
-    showMusicDialogue('Music paused');
-});
+function animateTrail() {
+    let x = mouseXPos;
+    let y = mouseYPos;
+    
+    trail.forEach((dot, index) => {
+        const nextDot = trail[index + 1] || trail[0];
+        
+        dot.style.left = x + 'px';
+        dot.style.top = y + 'px';
+        dot.style.transform = `scale(${(trailLength - index) / trailLength})`;
+        
+        x += (nextDot.offsetLeft - x) * 0.3;
+        y += (nextDot.offsetTop - y) * 0.3;
+    });
+}
 
-musicPlayer.addEventListener('play', () => {
-    isPlaying = true;
-    musicToggle.style.background = '#00d4ff';
-    musicToggle.style.color = '#222';
-    showMusicDialogue('Playing music...');
-});
-
-console.log('DREVENANT7 site loaded successfully!');
+setInterval(animateTrail, 16);
