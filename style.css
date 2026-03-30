@@ -155,6 +155,51 @@ body {
     75%      { transform: translate(50px,-40px); }
 }
 
+/* ---------- Language Switcher ---------- */
+.lang-switcher {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1001;
+    display: flex;
+    gap: 6px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 6px;
+    backdrop-filter: blur(4px);
+}
+
+.lang-btn {
+    padding: 6px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.22s var(--ease);
+    -webkit-appearance: none;
+    outline-offset: 2px;
+    font-family: var(--font-body), 'Khmer OS', sans-serif;
+}
+
+.lang-btn:hover {
+    color: var(--text);
+}
+
+.lang-btn.active {
+    background: rgba(220, 38, 38, 0.15);
+    color: var(--red);
+    border: 1px solid rgba(220, 38, 38, 0.4);
+}
+
+.lang-btn:active {
+    transform: scale(0.95);
+}
+
 /* ---------- Music Button ---------- */
 .music-btn {
     position: fixed;
@@ -386,13 +431,11 @@ main {
     transition: transform 0.22s var(--ease), border-color 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s var(--ease);
     position: relative;
     overflow: hidden;
-    /* Ensure nice tap target on mobile */
     min-height: 72px;
     -webkit-user-select: none;
     user-select: none;
 }
 
-/* shimmer on hover (desktop) */
 .link-card::after {
     content: '';
     position: absolute;
@@ -445,11 +488,11 @@ main {
 .yt-icon      { background: linear-gradient(135deg, #ff0000, #cc0000); }
 
 /* Per-card accent colors */
-.link-card.coffee:hover     { border-color: rgba(255,221,0,0.5);  box-shadow: 0 8px 32px rgba(255,221,0,0.2); }
-.link-card.telegram:hover   { border-color: rgba(0,136,204,0.5); box-shadow: 0 8px 32px rgba(0,136,204,0.2); }
-.link-card.telegram-ch:hover{ border-color: rgba(34,158,217,0.5);box-shadow: 0 8px 32px rgba(34,158,217,0.2); }
-.link-card.tiktok:hover     { border-color: rgba(254,44,85,0.5);  box-shadow: 0 8px 32px rgba(254,44,85,0.2); }
-.link-card.youtube:hover    { border-color: rgba(255,0,0,0.5);    box-shadow: 0 8px 32px rgba(255,0,0,0.2); }
+.link-card.coffee:hover      { border-color: rgba(255,221,0,0.5);  box-shadow: 0 8px 32px rgba(255,221,0,0.2); }
+.link-card.telegram:hover    { border-color: rgba(0,136,204,0.5);  box-shadow: 0 8px 32px rgba(0,136,204,0.2); }
+.link-card.telegram-ch:hover { border-color: rgba(34,158,217,0.5); box-shadow: 0 8px 32px rgba(34,158,217,0.2); }
+.link-card.tiktok:hover      { border-color: rgba(254,44,85,0.5);  box-shadow: 0 8px 32px rgba(254,44,85,0.2); }
+.link-card.youtube:hover     { border-color: rgba(255,0,0,0.5);    box-shadow: 0 8px 32px rgba(255,0,0,0.2); }
 
 /* Link text */
 .link-body {
@@ -476,6 +519,7 @@ main {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: var(--font-body), 'Khmer OS', sans-serif;
 }
 
 .link-arrow {
@@ -519,6 +563,11 @@ main {
 /* ---------- Tablet & Up ---------- */
 @media (min-width: 560px) {
     main { padding: 88px 24px 48px; }
+
+    .lang-switcher {
+        top: 24px;
+        left: 24px;
+    }
 
     .music-btn {
         top: 24px;
