@@ -6,165 +6,133 @@
     <title>DREVENANT7 - Pojavlauncher Expert</title>
     <meta name="description" content="DREVENANT7: Your Source For All Things Pojavlauncher. Expert Tutorials For iOS 18-26 Installation, Optifine Setup, Shaders, And Fixing Common Errors.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader-container">
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
-            <div class="loader-percentage">0%</div>
+    <div id="loading-screen" aria-hidden="true">
+        <div class="loader-inner">
+            <div class="loader-logo">DRV7</div>
+            <div class="loader-bar-track"><div class="loader-bar" id="loaderBar"></div></div>
+            <div class="loader-pct" id="loaderPct">0%</div>
         </div>
     </div>
 
     <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+    <div class="bg-canvas" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="grid-lines"></div>
     </div>
 
     <!-- Music Player -->
-    <div class="music-player" id="musicPlayer">
-        <button class="music-btn" id="musicBtn" aria-label="Toggle Music">
-            <i class="fas fa-music"></i>
-            <span class="music-wave">
-                <span class="wave-bar"></span>
-                <span class="wave-bar"></span>
-                <span class="wave-bar"></span>
-                <span class="wave-bar"></span>
-            </span>
-        </button>
-    </div>
+    <button class="music-btn" id="musicBtn" aria-label="Toggle background music">
+        <i class="fas fa-music" id="musicIcon"></i>
+        <span class="music-waves" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+        </span>
+    </button>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="profile-container">
-                <div class="profile-image-wrapper">
-                    <img src="https://drevenant7.site/profile.png" alt="DREVENANT7" class="profile-image">
-                    <div class="profile-glow"></div>
+    <!-- Main -->
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="avatar-wrap">
+                    <img src="https://drevenant7.site/profile.png" alt="DREVENANT7 profile" class="avatar" loading="eager">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-glow"></div>
                 </div>
-            </div>
 
-            <h1 class="main-title">
-                <span class="title-line">DREVENANT7</span>
-            </h1>
+                <div class="hero-text">
+                    <h1 class="name">DREVENANT7</h1>
+                    <p class="subtitle">Pojavlauncher <span class="accent">Expert</span></p>
+                    <p class="desc">
+                        Tutorials for iOS 18–26 installation, Optifine, Shaders,
+                        and fixing common errors. Join the mobile Java community below&nbsp;👇
+                    </p>
+                </div>
 
-            <div class="tagline">
-                <p class="tagline-text">
-                    <span class="highlight">DREVENANT7:</span> Your Source For All Things Pojavlauncher.
-                </p>
-                <p class="tagline-description">
-                    Expert Tutorials For iOS 18-26 Installation, Optifine Setup, Shaders, And Fixing Common Errors. 
-                    I Test The Best Settings So You Don't Have To. Join The Mobile Java Community Below! 👇
-                </p>
+                <div class="badges">
+                    <span class="badge"><i class="fas fa-mobile-alt"></i> iOS 18–26</span>
+                    <span class="badge"><i class="fas fa-cog"></i> Optifine</span>
+                    <span class="badge"><i class="fas fa-wrench"></i> Troubleshoot</span>
+                </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features-section">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>iOS Support</h3>
-                <p>Complete guides for iOS 18-26 installation</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-cog"></i>
-                </div>
-                <h3>Optimization</h3>
-                <p>Best settings for Optifine & Shaders</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-wrench"></i>
-                </div>
-                <h3>Troubleshooting</h3>
-                <p>Fix common errors with expert help</p>
-            </div>
-        </section>
+        <!-- Social Links -->
+        <section class="links-section">
+            <h2 class="section-heading">Connect With Me</h2>
 
-        <!-- Social Links Section -->
-        <section class="social-section">
-            <h2 class="section-title">Connect With Me</h2>
-            <div class="social-links">
-                <a href="https://buymeacoffee.com/khinphunnadet" target="_blank" rel="noopener noreferrer" class="social-card coffee" data-testid="coffee-link">
-                    <div class="social-icon">
-                        <img src="coffee.png" alt="Buy Me a Coffee">
-                    </div>
-                    <div class="social-content">
-                        <h3>Support My Work</h3>
-                        <p>Buy me a coffee ☕</p>
-                    </div>
-                    <div class="social-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
+            <div class="links-stack">
+
+                <a href="https://buymeacoffee.com/khinphunnadet" target="_blank" rel="noopener noreferrer" class="link-card coffee">
+                    <span class="link-icon-wrap coffee-icon">
+                        <img src="coffee.png" alt="">
+                    </span>
+                    <span class="link-body">
+                        <span class="link-title">Support My Work</span>
+                        <span class="link-sub">Buy me a coffee ☕</span>
+                    </span>
+                    <i class="fas fa-chevron-right link-arrow" aria-hidden="true"></i>
                 </a>
 
-                <a href="https://t.me/drevenant7" target="_blank" rel="noopener noreferrer" class="social-card telegram" data-testid="telegram-link">
-                    <div class="social-icon">
-                        <img src="telegram.png" alt="Telegram">
-                    </div>
-                    <div class="social-content">
-                        <h3>Telegram</h3>
-                        <p>Chat with me directly</p>
-                    </div>
-                    <div class="social-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
+                <a href="https://t.me/drevenant7" target="_blank" rel="noopener noreferrer" class="link-card telegram">
+                    <span class="link-icon-wrap tg-icon">
+                        <img src="telegram.png" alt="">
+                    </span>
+                    <span class="link-body">
+                        <span class="link-title">Telegram</span>
+                        <span class="link-sub">Chat with me directly</span>
+                    </span>
+                    <i class="fas fa-chevron-right link-arrow" aria-hidden="true"></i>
                 </a>
 
-                <a href="https://t.me/+ib_o3fc8Q-00Y2Y1" target="_blank" rel="noopener noreferrer" class="social-card telegram-channel" data-testid="telegram-channel-link">
-                    <div class="social-icon">
-                        <img src="telegram.png" alt="Telegram Channel">
-                    </div>
-                    <div class="social-content">
-                        <h3>Telegram Channel</h3>
-                        <p>Get latest updates</p>
-                    </div>
-                    <div class="social-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
+                <a href="https://t.me/+ib_o3fc8Q-00Y2Y1" target="_blank" rel="noopener noreferrer" class="link-card telegram-ch">
+                    <span class="link-icon-wrap tgch-icon">
+                        <img src="telegram.png" alt="">
+                    </span>
+                    <span class="link-body">
+                        <span class="link-title">Telegram Channel</span>
+                        <span class="link-sub">Get latest updates</span>
+                    </span>
+                    <i class="fas fa-chevron-right link-arrow" aria-hidden="true"></i>
                 </a>
 
-                <a href="https://www.tiktok.com/@drevenant7" target="_blank" rel="noopener noreferrer" class="social-card tiktok" data-testid="tiktok-link">
-                    <div class="social-icon">
-                        <img src="tiktok.png" alt="TikTok">
-                    </div>
-                    <div class="social-content">
-                        <h3>TikTok</h3>
-                        <p>Short tutorials & tips</p>
-                    </div>
-                    <div class="social-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
+                <a href="https://www.tiktok.com/@drevenant7" target="_blank" rel="noopener noreferrer" class="link-card tiktok">
+                    <span class="link-icon-wrap tt-icon">
+                        <img src="tiktok.png" alt="">
+                    </span>
+                    <span class="link-body">
+                        <span class="link-title">TikTok</span>
+                        <span class="link-sub">Short tutorials &amp; tips</span>
+                    </span>
+                    <i class="fas fa-chevron-right link-arrow" aria-hidden="true"></i>
                 </a>
 
-                <a href="https://www.youtube.com/@drevenant7" target="_blank" rel="noopener noreferrer" class="social-card youtube" data-testid="youtube-link">
-                    <div class="social-icon">
-                        <img src="youtube.png" alt="YouTube">
-                    </div>
-                    <div class="social-content">
-                        <h3>YouTube</h3>
-                        <p>In-depth video guides</p>
-                    </div>
-                    <div class="social-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
+                <a href="https://www.youtube.com/@drevenant7" target="_blank" rel="noopener noreferrer" class="link-card youtube">
+                    <span class="link-icon-wrap yt-icon">
+                        <img src="youtube.png" alt="">
+                    </span>
+                    <span class="link-body">
+                        <span class="link-title">YouTube</span>
+                        <span class="link-sub">In-depth video guides</span>
+                    </span>
+                    <i class="fas fa-chevron-right link-arrow" aria-hidden="true"></i>
                 </a>
+
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2025 DREVENANT7. All rights reserved.</p>
-            <p class="footer-tagline">Making Minecraft Mobile Better ⛏️</p>
+            <p>&copy; 2025 DREVENANT7</p>
+            <p class="footer-tag">Making Minecraft Mobile Better ⛏️</p>
         </footer>
     </main>
 
