@@ -6,25 +6,30 @@ window.addEventListener('load', () => {
     let progress = 0;
 
     const tick = setInterval(() => {
+        // Increment progress
         progress += Math.random() * 25 + 5;
 
         if (progress >= 100) {
             progress = 100;
             clearInterval(tick);
             
+            // Update UI to 100%
             if (bar) bar.style.width = '100%';
             if (pct) pct.textContent = '100%';
 
+            // Hide loading screen
             setTimeout(() => {
-                if (screen) screen.classList.add('hidden');
+                screen.classList.add('hidden');
                 document.body.style.overflow = 'auto';
             }, 400);
         } else {
+            // Update UI progress
             if (bar) bar.style.width = progress + '%';
             if (pct) pct.textContent = Math.floor(progress) + '%';
         }
     }, 180);
 });
+
 // Music Player
 const musicBtn = document.getElementById('musicBtn');
 let audio = null;
