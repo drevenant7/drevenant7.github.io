@@ -1,10 +1,10 @@
-# DREVENANT7 - Pojavlauncher Expert Website
+# ReaperZxMC - Zenith Launcher Expert Website
 
-![DREVENANT7](profile.jpeg)
+![ReaperZxMC](profile.jpeg)
 
 ## Overview
 
-This is the personal website of DREVENANT7, a leading expert in Pojavlauncher for running Minecraft Java Edition on mobile devices (iOS and Android). The site serves as a hub for tutorials, guides, and community resources related to Pojavlauncher, Optifine setup, shaders, and troubleshooting common issues.
+This is the personal website of ReaperZxMC, a leading expert in Zenith Launcher for running Minecraft Java Edition on mobile devices (iOS and Android). The site serves as a hub for tutorials, guides, and community resources related to Zenith Launcher, Optifine setup, shaders, and troubleshooting common issues.
 
 **Download my Minecraft mod "CoordDisplay" for free on Modrinth:** [https://modrinth.com/mod/coorddisplay/](https://modrinth.com/mod/coorddisplay/)
 
@@ -29,8 +29,8 @@ This is the personal website of DREVENANT7, a leading expert in Pojavlauncher fo
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/drevenant7-website.git
-   cd drevenant7-website
+   git clone https://github.com/yourusername/ReaperZxMC-website.git
+   cd ReaperZxMC-website
    ```
 
 2. **Open in Browser**:
@@ -81,12 +81,12 @@ This project is open source. Feel free to use and modify as needed.
 
 ## Contact
 
-- **Telegram**: [@drevenant7](https://t.me/drevenant7)
-- **YouTube**: [@drevenant7](https://www.youtube.com/@drevenant7)
-- **TikTok**: [@drevenant7](https://www.tiktok.com/@drevenant7)
+- **Telegram**: [@ReaperZxMC](https://t.me/ReaperZxMC)
+- **YouTube**: [@ReaperZxMC](https://www.youtube.com/@ReaperZxMC)
+- **TikTok**: [@ReaperZxMC](https://www.tiktok.com/@ReaperZxMC)
 - **Support**: [Buy Me a Coffee](https://buymeacoffee.com/khinphunnadet)
 
 ---
 
-*DREVENANT7: Your Source For All Things Pojavlauncher*</content>
+*ReaperZxMC: Your Source For All Things Zenith Launcher*</content>
 

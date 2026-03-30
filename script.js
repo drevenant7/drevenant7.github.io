@@ -49,8 +49,8 @@ musicBtn.addEventListener('click', () => {
 // Language Switcher
 const translations = {
     en: {
-        'hero-title': 'DREVENANT7',
-        'hero-subtitle': 'Pojavlauncher Expert',
+        'hero-title': 'ReaperZxMC',
+        'hero-subtitle': 'Zenith Launcher Expert',
         'hero-desc': 'Tutorials for iOS 18–26 installation, Optifine, Shaders, and fixing common errors. Join the mobile Java community below 🎮',
         'badge-1': 'iOS 18–26',
         'badge-2': 'Optifine',
@@ -66,12 +66,12 @@ const translations = {
         'card-tt-sub': 'Short tutorials & tips',
         'card-yt-title': 'YouTube',
         'card-yt-sub': 'In-depth video guides',
-        'footer-1': '© 2025 DREVENANT7',
+        'footer-1': '© 2025 ReaperZxMC',
         'footer-2': 'Making Minecraft Mobile Better 🎨🎮'
     },
     kh: {
-        'hero-title': 'DREVENANT7',
-        'hero-subtitle': 'អ្នកជំនាញ Pojavlauncher',
+        'hero-title': 'ReaperZxMC',
+        'hero-subtitle': 'អ្នកជំនាញ Zenith Launcher',
         'hero-desc': 'ការបង្រៀនអំពីការដំឡើង iOS 18–26, Optifine, Shaders និងការដោះស្រាយបញ្ហាផ្សេងៗ។ ចូលរួមជាមួយសហគមន៍ Java លើទូរស័ព្ទខាងក្រោម 🎮',
         'badge-1': 'iOS 18–26',
         'badge-2': 'Optifine',
@@ -87,7 +87,7 @@ const translations = {
         'card-tt-sub': 'វីដេអូខ្លីៗ និងគន្លឹះ',
         'card-yt-title': 'YouTube',
         'card-yt-sub': 'មគ្គុទ្ទេសក៍វីដេអូលម្អិត',
-        'footer-1': '© 2025 DREVENANT7',
+        'footer-1': '© 2025 ReaperZxMC',
         'footer-2': 'ធ្វើឱ្យ Minecraft លើទូរស័ព្ទកាន់តែល្អ 🎨🎮'
     }
 };
