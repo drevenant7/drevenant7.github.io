@@ -7,22 +7,24 @@ window.addEventListener('load', () => {
 
     const tick = setInterval(() => {
         progress += Math.random() * 25 + 5;
+
         if (progress >= 100) {
             progress = 100;
             clearInterval(tick);
-            bar.style.width = '100%';
-            pct.textContent = '100%';
+            
+            if (bar) bar.style.width = '100%';
+            if (pct) pct.textContent = '100%';
+
             setTimeout(() => {
-                screen.classList.add('hidden');
+                if (screen) screen.classList.add('hidden');
                 document.body.style.overflow = 'auto';
             }, 400);
         } else {
-            bar.style.width = progress + '%';
-            pct.textContent = Math.floor(progress) + '%';
+            if (bar) bar.style.width = progress + '%';
+            if (pct) pct.textContent = Math.floor(progress) + '%';
         }
     }, 180);
 });
-
 // Music Player
 const musicBtn = document.getElementById('musicBtn');
 let audio = null;
